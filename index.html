@@ -1,14 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qwgcyruyn</title>
+    <title>Японский кроссворд</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a simple HTML/JS project.</p>
+    <header class="topbar">
+        <div>
+            <h1>Японский кроссворд</h1>
+            <p>Мобильная версия nonogram в японской стилистике: бумажные оттенки, кляксы тушью и удобный интерфейс для игры и создания уровней.</p>
+        </div>
+        <div class="top-actions">
+            <button id="checkBtn">Проверить</button>
+            <button id="revealBtn">Показать решение</button>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <section class="sidebar">
+            <div class="panel">
+                <div class="level-meta">
+                    <span class="level-tag">Уровень</span>
+                    <h2 id="levelTitle">Лесной дух</h2>
+                    <p id="levelDescText">Пиксельная сцена, вдохновлённая Ghibli и Ukiyo-e.</p>
+                </div>
+                <div class="controls-grid">
+                    <label>Размер
+                        <select id="sizeSelect"></select>
+                    </label>
+                    <label>Режим
+                        <select id="modeSelect">
+                            <option value="play">Играть</option>
+                            <option value="create">Создать уровень</option>
+                        </select>
+                    </label>
+                </div>
+                <label>Выберите уровень
+                    <select id="levelSelect"></select>
+                </label>
+                <div class="buttons-row">
+                    <button id="newLevelBtn">Новый уровень</button>
+                    <button id="resetBtn">Сбросить</button>
+                </div>
+                <div class="status-panel">
+                    <div id="message">Выберите уровень и начните решать.</div>
+                    <div id="progress" class="progress-pill"></div>
+                </div>
+            </div>
+
+            <div class="panel palette-panel">
+                <h2>Палитра</h2>
+                <div id="palette" class="palette"></div>
+                <div class="tool-row">
+                    <label>Инструмент
+                        <select id="toolSelect">
+                            <option value="fill">Закрашивать</option>
+                            <option value="cross">Отметить как пустую</option>
+                            <option value="erase">Стереть</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="panel creator-panel">
+                <h2>Создание уровня</h2>
+                <label>Название
+                    <input id="levelName" placeholder="Название вашего уровня">
+                </label>
+                <label>Описание
+                    <textarea id="levelDesc" rows="3" placeholder="Краткое описание..."></textarea>
+                </label>
+                <button id="saveLevelBtn">Сохранить уровень</button>
+                <div id="customLevels"></div>
+            </div>
+
+            <div class="panel level-cards-panel">
+                <h2>Пазлы</h2>
+                <div id="levelCards" class="level-cards"></div>
+            </div>
+        </section>
+
+        <section class="board-area">
+            <div class="board-header">
+                <div class="board-topline">
+                    <div class="board-title">Пазл</div>
+                    <div class="board-stats">
+                        <span id="modeLabel" class="stat-pill">Режим: Играть</span>
+                        <span id="progress" class="stat-pill">Прогресс: 0/0</span>
+                    </div>
+                </div>
+                <div class="board-description">Разгадайте изображение, используя подсказки по строкам и столбцам.</div>
+            </div>
+            <div id="boardContainer" class="board-container"></div>
+            <section class="instruction-box">
+                <h2>Как играть</h2>
+                <p>Каждый ряд и каждый столбец содержит числа. Они показывают длину последовательных заполненных клеток.</p>
+                <ul>
+                    <li>Заполняйте клетки инструментом <strong>Закрашивать</strong>.</li>
+                    <li>Отмечайте пустые клетки инструментом <strong>Отметить как пустую</strong>.</li>
+                    <li>Между группами заполненных клеток должна быть хотя бы одна пустая клетка.</li>
+                    <li>Проверяйте решение кнопкой <strong>Проверить</strong> и смотрите ошибки.</li>
+                    <li>Нажмите <strong>Показать решение</strong>, чтобы увидеть готовую картинку.</li>
+                </ul>
+                <p>В режиме <strong>Создать уровень</strong> можно нарисовать собственный кроссворд, сохранить его и решать снова.</p>
+            </section>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
